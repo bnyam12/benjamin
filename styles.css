@@ -1,0 +1,349 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #0a0e27;
+  --color-bg-secondary: #1a1f3a;
+  --color-text: #e8eaf6;
+  --color-text-secondary: #9fa8da;
+  --color-accent: #00d4ff;
+  --color-telegram: #0088cc;
+  --color-instagram: #e4405f;
+  --color-youtube: #ff0000;
+  --color-github: #333;
+  --color-linkedin: #0077b5;
+  --color-twitter: #1da1f2;
+  --spacing-unit: 8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  background: linear-gradient(135deg, var(--color-bg) 0%, #0f1729 50%, var(--color-bg) 100%);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 4);
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 8) 0;
+  margin-bottom: calc(var(--spacing-unit) * 6);
+  position: relative;
+}
+
+.hero-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto calc(var(--spacing-unit) * 3);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-accent);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.profile-image-wrapper:hover .profile-image {
+  transform: scale(1.05);
+}
+
+.profile-ring {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  background: linear-gradient(135deg, var(--color-accent), #00a8cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+}
+
+.bio {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 8);
+}
+
+.social-card {
+  background: var(--color-bg-secondary);
+  border-radius: 16px;
+  padding: calc(var(--spacing-unit) * 3);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 2);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.social-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-card:hover::before {
+  left: 100%;
+}
+
+.social-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.social-card.telegram:hover {
+  border-color: var(--color-telegram);
+  box-shadow: 0 20px 40px rgba(0, 136, 204, 0.3);
+}
+
+.social-card.instagram:hover {
+  border-color: var(--color-instagram);
+  box-shadow: 0 20px 40px rgba(228, 64, 95, 0.3);
+}
+
+.social-card.youtube:hover {
+  border-color: var(--color-youtube);
+  box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+}
+
+.social-card.github:hover {
+  border-color: var(--color-github);
+  box-shadow: 0 20px 40px rgba(51, 51, 51, 0.3);
+}
+
+.social-card.linkedin:hover {
+  border-color: var(--color-linkedin);
+  box-shadow: 0 20px 40px rgba(0, 119, 181, 0.3);
+}
+
+.social-card.twitter:hover {
+  border-color: var(--color-twitter);
+  box-shadow: 0 20px 40px rgba(29, 161, 242, 0.3);
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.telegram .social-icon {
+  background: linear-gradient(135deg, var(--color-telegram), #006699);
+}
+
+.instagram .social-icon {
+  background: linear-gradient(135deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
+}
+
+.youtube .social-icon {
+  background: linear-gradient(135deg, var(--color-youtube), #cc0000);
+}
+
+.github .social-icon {
+  background: linear-gradient(135deg, var(--color-github), #1a1a1a);
+}
+
+.linkedin .social-icon {
+  background: linear-gradient(135deg, var(--color-linkedin), #005582);
+}
+
+.twitter .social-icon {
+  background: linear-gradient(135deg, var(--color-twitter), #0d8ecf);
+}
+
+.social-icon svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+.social-card:hover .social-icon {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.social-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.social-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.about {
+  background: var(--color-bg-secondary);
+  border-radius: 20px;
+  padding: calc(var(--spacing-unit) * 5);
+  margin-bottom: calc(var(--spacing-unit) * 6);
+  border: 2px solid rgba(0, 212, 255, 0.1);
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-accent);
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+footer {
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 4);
+  color: var(--color-text-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+.social-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.social-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.social-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.social-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.social-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.social-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: calc(var(--spacing-unit) * 2);
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .about {
+    padding: calc(var(--spacing-unit) * 3);
+  }
+
+  .about h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+}
